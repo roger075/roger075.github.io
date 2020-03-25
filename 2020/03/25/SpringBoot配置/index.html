@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="林劲武的博客">
+    <meta name="keyword" content>
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        SpringBoot配置 - roger075的博客
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> sometimes code， sometimes learn </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/mao.jfif" />
+        </div>
+        <div class="name">
+            <i>jingwu lin</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#SpringBoot学习之SpringBoot配置"><span class="toc-text">SpringBoot学习之SpringBoot配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-SpringBoot属性注入方式"><span class="toc-text">1.SpringBoot属性注入方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-yml文件配置"><span class="toc-text">2.yml文件配置</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> sometimes code， sometimes learn </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        SpringBoot配置
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2020-03-25 14:56:14</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#SpringBoot" title="SpringBoot">SpringBoot</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#SpringBoot配置" title="SpringBoot配置">SpringBoot配置</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h2 id="SpringBoot学习之SpringBoot配置"><a href="#SpringBoot学习之SpringBoot配置" class="headerlink" title="SpringBoot学习之SpringBoot配置"></a>SpringBoot学习之SpringBoot配置</h2><h3 id="1-SpringBoot属性注入方式"><a href="#1-SpringBoot属性注入方式" class="headerlink" title="1.SpringBoot属性注入方式"></a>1.SpringBoot属性注入方式</h3><p><strong>目标</strong>：能够使用@ConfigurationProperties实现SpringBoot配置文件配置项读取和应用</p>
+<p><strong>需求</strong>：将配置文件中的配置项读取到一个对象中；</p>
+<p><strong>实现</strong>：可以使用SpringBoot提供的注解@ConfigurationProperties，该注解可以将SpringBoot的配置文件（默认必须为application.properties或application.yml）中的配置项读取到一个对象中。</p>
+<p>实现步骤：</p>
+<ol>
+<li>创建配置项类JdbcProperties类，在该类名上添加@ConfigurationProperties；</li>
+<li>创建application.properties配置文件，并写入jdbc配置项；</li>
+<li>将JdbcProperties对象注入到JdbcConfig；</li>
+<li>测试</li>
+</ol>
+<p><strong>小结</strong>：</p>
+<ul>
+<li><p>使用@ConfigurationProperties编写配置类将配置文件中的配置项设置到对象中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ConfigurationProperties</span>(prefix = <span class="string">"jdbc"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JdbcProperties</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String url;</span><br><span class="line">    <span class="keyword">private</span> String driverClassName;</span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getUrl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> url;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUrl</span><span class="params">(String url)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.url = url;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getDriverClassName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> driverClassName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setDriverClassName</span><span class="params">(String driverClassName)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.driverClassName = driverClassName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getUsername</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> username;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUsername</span><span class="params">(String username)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.username = username;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPassword</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPassword</span><span class="params">(String password)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.password = password;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用@ConfigurationProperties在方法上使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="meta">@ConfigurationProperties</span>(prefix = <span class="string">"jdbc"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> DataSource <span class="title">dataSource</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> DruidDataSource();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h2 id="2-yml文件配置"><a href="#2-yml文件配置" class="headerlink" title="2.yml文件配置"></a>2.yml文件配置</h2><p><strong>目标</strong>：可以将多个yml文件在application.yml文件中配置激活</p>
+<p><strong>分析</strong>：yaml与properties配置文件除了展示形式不相同以外，其他功能和作用都一样的；在项目中的原来的读取方式不需要改变。</p>
+<p>yml配置文件的特征：</p>
+<ol>
+<li>树状层级结构展示配置项；</li>
+<li>配置项之间如果有关系的话需要分两行空格；</li>
+<li>配置项如果有值的话，那么需要在<code>:</code>之后空一格再写配置项值；</li>
+</ol>
+<p>1）将application.properties配置文件修改为application.yml的话；</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">jdbc:</span></span><br><span class="line">	<span class="attr">driverClassName:</span> <span class="string">com.mysql.jdbc.Driver</span></span><br><span class="line"><span class="attr">    url:</span> <span class="attr">jdbc:mysql://localhost:3306/springboot_test</span></span><br><span class="line">	<span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">	<span class="attr">password:</span> <span class="string">root</span></span><br></pre></td></tr></table></figure>
+
+<p>2）多个yml配置文件在SpringBoot中是被允许的。这些配置文件的名称必须为application-***.yml，并且这些配置文件必须要在application.yml配置文件中激活之后才可以使用。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">	<span class="attr">profiles:</span> </span><br><span class="line">		<span class="attr">active:</span> <span class="string">abc</span>     <span class="string">//abc即为application-abc.yml</span></span><br></pre></td></tr></table></figure>
+
+<p>3）如果properties和yml配置文件同时存在在SpringBoot项目中，那么这两类配置都有效。在两个配置文件中如果存在同名配置项的话会以properties文件的为主。</p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/18038544416">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/roger075">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>
