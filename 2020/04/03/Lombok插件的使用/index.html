@@ -11,7 +11,7 @@
 
     <title>
         
-        SpringBoot自动配置原理 - roger075的博客
+        Lombok插件的使用 - roger075的博客
         
     </title>
 
@@ -89,7 +89,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#SpringBoot自动配置原理"><span class="toc-text">SpringBoot自动配置原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SpringBootApplication"><span class="toc-text">@SpringBootApplication</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-ComponentScan"><span class="toc-text">1.@ComponentScan</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Lombok应用"><span class="toc-text">Lombok应用</span></a></li></ol>
 </div>
     
 </div>
@@ -120,18 +120,15 @@
 
 <div class="post-container">
     <div class="post-title">
-        SpringBoot自动配置原理
+        Lombok插件的使用
     </div>
 
     <div class="post-meta">
-        <span class="attr">发布于：<span>2020-03-26 16:18:05</span></span>
+        <span class="attr">发布于：<span>2020-04-03 11:48:09</span></span>
         
         <span class="attr">标签：/
         
-        <a class="tag" href="/tags/#SpringBoot" title="SpringBoot">SpringBoot</a>
-        <span>/</span>
-        
-        <a class="tag" href="/tags/#自动配置" title="自动配置">自动配置</a>
+        <a class="tag" href="/tags/#lombok" title="lombok">lombok</a>
         <span>/</span>
         
         
@@ -141,38 +138,39 @@
 </span>
     </div>
     <div class="post-content ">
-        <h2 id="SpringBoot自动配置原理"><a href="#SpringBoot自动配置原理" class="headerlink" title="SpringBoot自动配置原理"></a>SpringBoot自动配置原理</h2><h3 id="SpringBootApplication"><a href="#SpringBootApplication" class="headerlink" title="@SpringBootApplication"></a>@SpringBootApplication</h3><p>@SpringBootApplication：是SpringBoot项目的核心注解，目的是开启自动配置</p>
-<p>点开源码，可以看到：</p>
-<p><img src="SpringBootApplication.png" alt></p>
-<p>我们从下往上开始分析：</p>
-<h4 id="1-ComponentScan"><a href="#1-ComponentScan" class="headerlink" title="1.@ComponentScan"></a>1.@ComponentScan</h4><p>1）@ComponentScan：组件扫描，其功能是自动扫描并加载符合条件的组件（如@Component、@Controller、@Service、@Repository），最终将这些bean定义加载到IoC容器中。</p>
-<p>​    我们可以通过basePackages等属性来细粒度的定制@ComponentScan自动扫描的范围，如果不指定，则默认从声明@ComponentScan所在类的package进行扫描。</p>
-<p>2）参数的作用</p>
-<blockquote>
-<p>basePackageClasses：对于basepackages() 指定扫描注释组件包类型安全的替代。</p>
-<p>excludeFilters：指定不适合组件扫描的类型。</p>
-<p>includeFilters：指定哪些类型有资格用于组件扫描。</p>
-<p>lazyInit：指定是否应注册扫描的beans为lazy初始化。</p>
-<p>nameGenerator：用于在Spring容器中的检测到的组件命名。</p>
-<p>resourcePattern：控制可用于组件检测的类文件。</p>
-<p>scopedProxy：指出代理是否应该对检测元件产生，在使用过程中会在代理风格时尚的范围是必要的。</p>
-</blockquote>
-<ol>
-<li>JavaConfig配置：</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ComponentScan</span>(basePackages = <span class="string">"com.lin.demo.*"</span>, useDefaultFilters = <span class="keyword">false</span>, includeFilters = &#123;</span><br><span class="line">        <span class="meta">@Filter</span>(type = FilterType.ANNOTATION, classes = Controller.class)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JavaConfig</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>useDefaultFilters = false 表示禁用默认的过滤规则</p>
-<ol start="2">
-<li>FilterType类型<ul>
-<li>ANNOTATION: 注解，常用</li>
-<li>ASSIGNABLE_TYPE: 给定类型，该类型及其子类、接口的实现类都起作用</li>
-<li>ASPECTJ: AspectJ表达式</li>
-<li>REGEX: 正则表达式</li>
-<li>CUSTOM: 自定义规则</li>
+        <h2 id="Lombok应用"><a href="#Lombok应用" class="headerlink" title="Lombok应用"></a>Lombok应用</h2><p>目标：使用Lombok的注解实现pojo类的简化</p>
+<p>分析：</p>
+<p>使用SpringBoot整合SSM工程，需要使用到数据库数据。</p>
+<ul>
+<li>将数据库表数据导入到数据库中</li>
+<li>编写数据库对应的实体类；一般情况下需要编写get/set/toString等这些方法会耗时并且会让实体类看起来比较臃肿，可以使用lombok插件对实体类进行简化。</li>
 </ul>
+<p>Lombok是一个插件工具类包；提供了一些注解@Data、@Getter等这些注解去简化实体类的构造方法、get/set等方法的编写。</p>
+<ol>
+<li><p>在IDEA中安装lombok插件；</p>
+<p><img src="%E5%AE%89%E8%A3%85.png" alt="IDEA安装"></p>
+</li>
+<li><p>添加lombok对应的依赖到羡慕pom.xml文件；</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
+<ol start="3">
+<li><p>改造实体类使用lombok注解；</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@Data</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="symbol">User</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">int</span> id;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String userName;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<p><strong>小结</strong>：</p>
+<p>在bean上使用：</p>
+<p>@Data：自动提供getter和setter、hashCode、equals、toString等方法</p>
+<p>@Getter：自动提供getter方法</p>
+<p>@Setter：自动提供setter方法</p>
+<p>@Slf4j：自动在bean中提供log变量，其实用的是slf4j的日志功能</p>
 
         
         <br />
