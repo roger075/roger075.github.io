@@ -11,7 +11,7 @@
 
     <title>
         
-        roger075的博客
+        SpringBoot整合-Mybatis - roger075的博客
         
     </title>
 
@@ -53,7 +53,7 @@
     </div>
     <div class="contents" id="nav-content">
         <ul>
-            <li  class=active >
+            <li >
                 <a href="/">
                     <i class="iconfont icon-shouye1"></i>
                     <span>主页</span>
@@ -88,6 +88,10 @@
         </ul>
     </div>
     
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#SpringBoot整合-Mybatis"><span class="toc-text">SpringBoot整合-Mybatis</span></a></li></ol>
+</div>
+    
 </div>
 
 
@@ -112,119 +116,63 @@
     <div class="index-middle">
         <!-- Main Content -->
         
-<div class="post-preview-container" style="min-height: 576px">
-    
-    <div class="post-preview">
-        <div class="post-time">2020-04-03</div>
-        <div class="post-info">
-            <a href="/2020/04/03/SpringBoot整合-Mybatis/">
-                <h3>
-                    SpringBoot整合-Mybatis
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#Mybatis" title="Mybatis">Mybatis</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+
+
+<div class="post-container">
+    <div class="post-title">
+        SpringBoot整合-Mybatis
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2020-04-03</div>
-        <div class="post-info">
-            <a href="/2020/04/03/Lombok插件的使用/">
-                <h3>
-                    Lombok插件的使用
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#lombok" title="lombok">lombok</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2020-04-03 14:07:25</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#Mybatis" title="Mybatis">Mybatis</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2020-03-26</div>
-        <div class="post-info">
-            <a href="/2020/03/26/SpringBoot自动配置原理/">
-                <h3>
-                    SpringBoot自动配置原理
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#SpringBoot" title="SpringBoot">SpringBoot</a>
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#自动配置" title="自动配置">自动配置</a>
-                <span>/</span>
-                
-                
-            </p>
+    <div class="post-content ">
+        <h2 id="SpringBoot整合-Mybatis"><a href="#SpringBoot整合-Mybatis" class="headerlink" title="SpringBoot整合-Mybatis"></a>SpringBoot整合-Mybatis</h2><p><strong>目标</strong>：配置Mybatis在SpringBoot工程中的整合包，设置Mybatis的实体类别名，输出执行sql语句配置项</p>
+<p><strong>分析</strong>：</p>
+<ol>
+<li><p>添加启动器依赖；</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.spring.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>2.0.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="2">
+<li><p>配置Mybatis：实体类别名包，日志，映射文件等；</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">mybatis:</span></span><br><span class="line">  <span class="comment"># 实体类别名路径包</span></span><br><span class="line"><span class="attr">  type-aliases-package:</span> <span class="string">com.lin.demo.pojo</span></span><br><span class="line">  <span class="comment"># 映射文件路径</span></span><br><span class="line"><span class="attr">  mapper-locations:</span> <span class="attr">classpath:mappers/*.xml</span></span><br><span class="line"><span class="attr">  configuration:</span></span><br><span class="line">    <span class="comment"># 日志</span></span><br><span class="line"><span class="attr">    log-impl:</span> <span class="string">org.apache.ibatis.logging.stdout.StdOutImpl</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="3">
+<li><p>配置MapperScan；</p>
+<p><img src="F:%5Cblog%5Csource_posts%5CSpringBoot%E6%95%B4%E5%90%88-Mybatis%5CMapperScan.png" alt></p>
+</li>
+</ol>
+
+        
+        <br />
+        <div id="comment-container">
         </div>
-    </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2020-03-25</div>
-        <div class="post-info">
-            <a href="/2020/03/25/SpringBoot配置/">
-                <h3>
-                    SpringBoot配置
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#SpringBoot" title="SpringBoot">SpringBoot</a>
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#SpringBoot配置" title="SpringBoot配置">SpringBoot配置</a>
-                <span>/</span>
-                
-                
-            </p>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
         </div>
+
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2020-03-25</div>
-        <div class="post-info">
-            <a href="/2020/03/25/SpringBoot学习/">
-                <h3>
-                    SpringBoot学习
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#SpringBoot" title="SpringBoot">SpringBoot</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
-    </div>
-    
 </div>
-<ul class="pager">
-    
-    
-</ul>
 
     </div>
 </div>
@@ -280,12 +228,31 @@
     // We expose some of the variables needed by the front end
     window.hexo_search_path = "search.json"
     window.hexo_root = "/"
-    window.isPost = false
+    window.isPost = true
 </script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
 
 
 

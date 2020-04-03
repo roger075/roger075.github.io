@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://roger075.github.io/2020/04/03/SpringBoot%E6%95%B4%E5%90%88-Mybatis/</loc>
+    
+    <lastmod>2020-04-03T06:25:12.704Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://roger075.github.io/2020/04/03/Lombok%E6%8F%92%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8/</loc>
     
     <lastmod>2020-04-03T04:11:45.081Z</lastmod>
