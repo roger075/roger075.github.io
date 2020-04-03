@@ -11,7 +11,7 @@
 
     <title>
         
-        roger075的博客
+        SpringBoot整合-通用Mapper - roger075的博客
         
     </title>
 
@@ -53,7 +53,7 @@
     </div>
     <div class="contents" id="nav-content">
         <ul>
-            <li  class=active >
+            <li >
                 <a href="/">
                     <i class="iconfont icon-shouye1"></i>
                     <span>主页</span>
@@ -88,6 +88,10 @@
         </ul>
     </div>
     
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#SpringBoot整合-通用Mapper"><span class="toc-text">SpringBoot整合-通用Mapper</span></a></li></ol>
+</div>
+    
 </div>
 
 
@@ -112,139 +116,54 @@
     <div class="index-middle">
         <!-- Main Content -->
         
-<div class="post-preview-container" style="min-height: 576px">
-    
-    <div class="post-preview">
-        <div class="post-time">2020-04-03</div>
-        <div class="post-info">
-            <a href="/2020/04/03/SpringBoot整合-通用Mapper/">
-                <h3>
-                    SpringBoot整合-通用Mapper
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#Mapper" title="Mapper">Mapper</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+
+
+<div class="post-container">
+    <div class="post-title">
+        SpringBoot整合-通用Mapper
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2020-04-03</div>
-        <div class="post-info">
-            <a href="/2020/04/03/SpringBoot整合-Mybatis/">
-                <h3>
-                    SpringBoot整合-Mybatis
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#Mybatis" title="Mybatis">Mybatis</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2020-04-03 14:29:36</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#Mapper" title="Mapper">Mapper</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2020-04-03</div>
-        <div class="post-info">
-            <a href="/2020/04/03/Lombok插件的使用/">
-                <h3>
-                    Lombok插件的使用
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#lombok" title="lombok">lombok</a>
-                <span>/</span>
-                
-                
-            </p>
+    <div class="post-content ">
+        <h2 id="SpringBoot整合-通用Mapper"><a href="#SpringBoot整合-通用Mapper" class="headerlink" title="SpringBoot整合-通用Mapper"></a>SpringBoot整合-通用Mapper</h2><p><strong>目标</strong>：配置通用Mapper组件到SpringBoot项目中并使用Mapper<t>接口</t></p>
+<p><strong>分析</strong>：</p>
+<p>通用Mapper：可以实现自动拼接sql语句；所有的Mapper都不需要编写任何方法也就是不用编写sql语句，可以提高开发效率。</p>
+<p>如果有特殊需要，可以通用Mapper官方查看：</p>
+<p>[]: <a href="https://github.com/abel533/Mapper/wiki/3.config" target="_blank" rel="noopener">https://github.com/abel533/Mapper/wiki/3.config</a>    “Mapper官方链接”</p>
+<ol>
+<li>添加启动器依赖；</li>
+<li>改造UserMapper继承Mapper<user>；</user></li>
+<li>修改启动引导类Application中的Mapper扫描注解；</li>
+<li>修改User实体类添加jpa注解；</li>
+<li>改造UserService实现业务功能；</li>
+</ol>
+<p><strong>小结</strong>：</p>
+<p>在启动引导类上面的mapper扫描注解一定要修改为通用mapper的扫描注解</p>
+
+        
+        <br />
+        <div id="comment-container">
         </div>
-    </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2020-03-26</div>
-        <div class="post-info">
-            <a href="/2020/03/26/SpringBoot自动配置原理/">
-                <h3>
-                    SpringBoot自动配置原理
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#SpringBoot" title="SpringBoot">SpringBoot</a>
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#自动配置" title="自动配置">自动配置</a>
-                <span>/</span>
-                
-                
-            </p>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
         </div>
+
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2020-03-25</div>
-        <div class="post-info">
-            <a href="/2020/03/25/SpringBoot配置/">
-                <h3>
-                    SpringBoot配置
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#SpringBoot" title="SpringBoot">SpringBoot</a>
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#SpringBoot配置" title="SpringBoot配置">SpringBoot配置</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
-    </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2020-03-25</div>
-        <div class="post-info">
-            <a href="/2020/03/25/SpringBoot学习/">
-                <h3>
-                    SpringBoot学习
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#SpringBoot" title="SpringBoot">SpringBoot</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
-    </div>
-    
 </div>
-<ul class="pager">
-    
-    
-</ul>
 
     </div>
 </div>
@@ -300,12 +219,31 @@
     // We expose some of the variables needed by the front end
     window.hexo_search_path = "search.json"
     window.hexo_root = "/"
-    window.isPost = false
+    window.isPost = true
 </script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
 
 
 
